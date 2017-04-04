@@ -35,46 +35,8 @@ public class TestActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                try {
-                    double hNum = Double.parseDouble(hTxt.getText().toString());
-                    double wNum = Double.parseDouble(wTxt.getText().toString());
-
-
-                    double outW;
-                    double bmi;
-                    String outBMI;
-                    if (metricBox.isChecked()) {
-                        //DO METRIC
-                        bmi = wNum / (hNum * hNum);
-                    } else {
-                        //DO STANDARD
-                        outW = wNum * 703;
-                        bmi = outW / (hNum * hNum);
-                    }
-
-                    objTxt.setText("Your BMI is " + df.format(bmi));
-                    String subText;
-
-                    if (bmi <= 18.5) {
-                        subText = "Underweight";
-                        subTxt.setTextColor(Color.rgb(255,128,0));
-                    } else if (bmi < 25) {
-                        subText = "Normal";
-                        subTxt.setTextColor(Color.rgb(0,160,0));
-                    } else if (bmi < 30) {
-                        subText = "Overweight";
-                        subTxt.setTextColor(Color.rgb(255,128,0));
-                    } else {
-                        subText = "Obese";
-                        subTxt.setTextColor(Color.rgb(255,0,0));
-                    }
-
-                    //PRINT OUTPUT OPTION
-                    subTxt.setText("The Department of Health classifies you as:\n" + subText);
-
-                } catch (NumberFormatException e){
-                    objTxt.setText("Use must enter a number in both fields");
-                }
+                Berry berry = new Berry ("Rosenbloom", "Spring", "RF1");
+                BerryTools.inputBerry(berry);
             }
         });
 
