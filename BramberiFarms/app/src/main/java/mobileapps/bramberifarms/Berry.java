@@ -9,7 +9,7 @@ public class Berry {
     private String season; // season of the berry
     private String bid; //berry id (example RF1)
 
-    public Berry(String bid, String name, String season) {
+    public Berry(String name, String season, String bid) {
         this.bid = bid;
         this.name = name;
         this.season = season;
@@ -40,6 +40,6 @@ public class Berry {
     }
 
     public String toString(){
-        return ("ID: " + bid + " Name: " + name + " Season: " + season);
+        return ("Name: " + name + " Season: " + season + " ID: " + bid);
     }
 }

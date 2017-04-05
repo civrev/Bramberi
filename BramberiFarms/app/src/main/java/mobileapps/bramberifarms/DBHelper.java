@@ -30,11 +30,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         //I am seperating these into 2 SQL executions to make it easier on the eyes
         db.execSQL("create table " + StatsTable.NAME + "(" +
+                " _id integer primary key autoincrement, " +
                 StatsTable.Cols.BID + ", " + StatsTable.Cols.YEAR +
                 ", " + StatsTable.Cols.NUMPLANTS + ", " +
                 StatsTable.Cols.YIELDPP + ", " + StatsTable.Cols.MARKETYIELD +
-                ", " + StatsTable.Cols.PRICEPP + ", primary key(" +
-                StatsTable.Cols.BID + ", " + StatsTable.Cols.YEAR +"))");
+                ", " + StatsTable.Cols.PRICEPP + ")");
     }
 
     //and this one is how to upgrade from an old version to new version

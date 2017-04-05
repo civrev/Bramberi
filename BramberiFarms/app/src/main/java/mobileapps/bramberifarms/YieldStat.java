@@ -12,14 +12,6 @@ public class YieldStat {
     private double marketYield; // yield for market (in lbs)
     private double pricePP; // price per pound (in $)
 
-    public String getBid() {
-        return bid;
-    }
-
-    public void setBid(String bid) {
-        this.bid = bid;
-    }
-
     public YieldStat(String bid, int year, int numPlants, double yieldPP, double marketYield, double pricePP) {
         this.bid = bid;
         this.year = year;
@@ -27,6 +19,13 @@ public class YieldStat {
         this.yieldPP = yieldPP;
         this.marketYield = marketYield;
         this.pricePP = pricePP;
+    }
+    public String getBid() {
+        return bid;
+    }
+
+    public void setBid(String bid) {
+        this.bid = bid;
     }
 
     public int getYear() {
