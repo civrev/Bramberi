@@ -13,21 +13,11 @@
     <Button
         android:text="Back"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/backBtn" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:hint="Season"
-        android:layout_below="@+id/nameField"
-        android:layout_alignStart="@+id/nameField"
-        android:layout_marginTop="20dp"
-        android:id="@+id/seasonField" />
+        android:id="@+id/backBtn"
+        android:layout_alignStart="@+id/statInBtn" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -37,16 +27,20 @@
         android:ems="10"
         android:id="@+id/nameField"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="10sp" />
 
-    <Button
-        android:text="insert"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/entBtn"
-        android:layout_below="@+id/idField"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp" />
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:hint="Season"
+        android:id="@+id/seasonField"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/entBtn"
+        android:layout_marginStart="45dp"
+        android:textSize="10sp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -54,10 +48,111 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:hint="Berry ID (RF1)"
-        android:layout_marginTop="25dp"
         android:id="@+id/idField"
+        android:textSize="10sp"
+        android:layout_below="@+id/nameField"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="NOTHING"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/outLabel"
+        android:layout_alignParentStart="true"
+        android:textSize="10sp"
+        android:layout_below="@+id/idField"
+        android:layout_marginTop="22dp" />
+
+    <Button
+        android:text="insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/entBtn"
         android:layout_below="@+id/seasonField"
-        android:layout_alignStart="@+id/seasonField" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/idField" />
+
+    <Button
+        android:text="pull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pullBtn"
+        android:layout_below="@+id/entBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/outLabel" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Berry ID"
+        android:ems="10"
+        android:layout_below="@+id/outLabel"
+        android:layout_alignParentStart="true"
+        android:id="@+id/bidStatF" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="year of stats"
+        android:ems="10"
+        android:layout_below="@+id/pullBtn"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/yearStatF"
+        android:layout_toEndOf="@+id/idField" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="number of plants"
+        android:ems="10"
+        android:layout_below="@+id/bidStatF"
+        android:layout_alignParentStart="true"
+        android:id="@+id/plantsStatF"
+        android:textSize="14sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="market yield"
+        android:ems="10"
+        android:layout_below="@+id/plantsStatF"
+        android:layout_alignParentStart="true"
+        android:id="@+id/marketStatF" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="yield per plant"
+        android:ems="10"
+        android:layout_below="@+id/bidStatF"
+        android:layout_alignStart="@+id/yearStatF"
+        android:id="@+id/yieldStatF" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="price per lb"
+        android:ems="10"
+        android:layout_below="@+id/plantsStatF"
+        android:layout_alignStart="@+id/yieldStatF"
+        android:id="@+id/priceStatF" />
+
+    <TextView
+        android:text="NOTHING"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/marketStatF"
+        android:layout_alignParentStart="true"
+        android:id="@+id/statOut"
+        android:textAlignment="center"
+        android:layout_toStartOf="@+id/backBtn"
+        android:layout_alignParentBottom="true" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -80,21 +175,21 @@
 
     </TableLayout>
 
-    <TextView
-        android:text="NOTHING"
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/entBtn"
-        android:layout_alignParentStart="true"
-        android:id="@+id/outLabel" />
+        android:layout_above="@+id/backBtn"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/statInBtn"
+        android:text="stat in"
+        android:layout_height="35dp" />
 
     <Button
-        android:text="pull"
+        android:text="stat out"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/outLabel"
-        android:layout_alignStart="@+id/entBtn"
-        android:layout_marginTop="16dp"
-        android:id="@+id/pullBtn" />
+        android:layout_height="35dp"
+        android:layout_above="@+id/statInBtn"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/statOutBtn"
+        tools:layout_height="wrap_content" />
 
 </RelativeLayout>

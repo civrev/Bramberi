@@ -69,6 +69,7 @@ public class YieldStat {
     }
 
     public String toString(){
-        return (bid+":"+year+":"+numPlants+":"+yieldPP+":"+marketYield+":"+pricePP);
+        return ("BID: " + bid+" year: "+year+" plants: "+numPlants+" yieldpp: "+yieldPP+
+                " market yield: "+marketYield+" priceplb: "+pricePP);
     }
 }
