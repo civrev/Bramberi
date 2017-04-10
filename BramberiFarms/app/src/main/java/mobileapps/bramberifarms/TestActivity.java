@@ -44,9 +44,12 @@ public class TestActivity extends AppCompatActivity {
         final Button statInBtn = (Button) findViewById(R.id.statInBtn);
         final Button statOutBtn = (Button) findViewById(R.id.statOutBtn);
         final TextView statOut = (TextView) findViewById(R.id.statOut);
-
+        //for testing pulling a whole table select * from TABLE
         final Button allBBtn = (Button) findViewById(R.id.allBBtn);
         final Button allSBtn = (Button) findViewById(R.id.allSBtn);
+
+
+        
 
 
         entBtn.setOnClickListener(new View.OnClickListener() {
@@ -123,10 +126,6 @@ public class TestActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
