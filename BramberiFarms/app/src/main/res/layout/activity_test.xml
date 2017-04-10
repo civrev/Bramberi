@@ -192,4 +192,20 @@
         android:id="@+id/statOutBtn"
         tools:layout_height="wrap_content" />
 
+    <Button
+        android:text="allB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/statOutBtn"
+        android:layout_toEndOf="@+id/statOut"
+        android:id="@+id/allBBtn" />
+
+    <Button
+        android:text="allS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/allBBtn"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/allSBtn" />
+
 </RelativeLayout>
