@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import static mobileapps.bramberifarms.DBSchema.*;
 
@@ -13,28 +16,63 @@ import static mobileapps.bramberifarms.DBSchema.*;
  */
 
 public class BerryTools {
+
     private static Context c = MainActivity.getmContext();
     private static SQLiteDatabase db = new DBHelper(c).getWritableDatabase();;
 
-    public static void inputBerry(Berry berry) {
-        ContentValues values = new ContentValues();
-        values.put(BerryTable.Cols.NAME, berry.getName());
-        values.put(BerryTable.Cols.SEASON, berry.getSeason());
-        values.put(BerryTable.Cols.BID, berry.getBid());
-        long id = db.insert(BerryTable.NAME, null, values);
-        Log.i("BERRY TOOLS", "inputBerry _id: " + id);
+    /*
+    new Thread(){
+        public void run(){
+            try{
+
+            }catch(Exception e){
+                //handle failure here
+            }
+        }
+    }.start();
+    */
+
+    public static void inputBerry(Berry berryX) {
+        final Berry berry = berryX;
+        if(!berry.equals(null)) {
+            new Thread() {
+                public void run() {
+                    try {
+                        ContentValues values = new ContentValues();
+                        values.put(BerryTable.Cols.NAME, berry.getName());
+                        values.put(BerryTable.Cols.SEASON, berry.getSeason());
+                        values.put(BerryTable.Cols.BID, berry.getBid());
+                        long id = db.insert(BerryTable.NAME, null, values);
+                        Log.i("BERRY TOOLS", "inputBerry _id: " + id);
+                    } catch (Exception e) {
+
+                    }
+                }
+            }.start();
+        }
     }
 
-    public static void inputStats(YieldStat stat) {
-        ContentValues values = new ContentValues();
-        values.put(StatsTable.Cols.BID, stat.getBid());
-        values.put(StatsTable.Cols.YEAR, stat.getYear());
-        values.put(StatsTable.Cols.NUMPLANTS, stat.getNumPlants());
-        values.put(StatsTable.Cols.YIELDPP, stat.getYieldPP());
-        values.put(StatsTable.Cols.MARKETYIELD, stat.getMarketYield());
-        values.put(StatsTable.Cols.PRICEPP, stat.getPricePP());
-        long id = db.insert(StatsTable.NAME, null, values);
-        Log.i("BERRY TOOLS", "inputStats _id: " + id);
+    public static void inputStats(YieldStat statX) {
+        final YieldStat stat = statX;
+        if(!stat.equals(null)) {
+            new Thread() {
+                public void run() {
+                    try {
+                        ContentValues values = new ContentValues();
+                        values.put(StatsTable.Cols.BID, stat.getBid());
+                        values.put(StatsTable.Cols.YEAR, stat.getYear());
+                        values.put(StatsTable.Cols.NUMPLANTS, stat.getNumPlants());
+                        values.put(StatsTable.Cols.YIELDPP, stat.getYieldPP());
+                        values.put(StatsTable.Cols.MARKETYIELD, stat.getMarketYield());
+                        values.put(StatsTable.Cols.PRICEPP, stat.getPricePP());
+                        long id = db.insert(StatsTable.NAME, null, values);
+                        Log.i("BERRY TOOLS", "inputStats _id: " + id);
+                    } catch (Exception e) {
+                        //handle failure here
+                    }
+                }
+            }.start();
+        }
     }
 
     public static Berry pullBerry(String bName){
@@ -61,33 +99,95 @@ public class BerryTools {
             return berry;
         }
         return null;
+
     }
 
     public static YieldStat pullStats(String bName){
         Berry berry = pullBerry(bName);
-        String bid = berry.getBid();
+        String bid = null;
+        if (bName.length()!=0) {
+            bid = berry.getBid();
 
-        String table = "stats";
+            String table = "stats";
+            String[] columns = null;
+            String selection = "bid =?";
+            String[] selectionArgs = {bid};
+            String groupBy = null;
+            String having = null;
+            String orderBy = null;
+            String limit = "1";
+            Cursor c = db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
+            int cSize = c.getCount();
+            Log.i("BERRY TOOLS", "pullStats cursor size: " + Integer.toString(cSize));
+            if (cSize > 0) {
+                c.moveToNext();
+                String brryId = c.getString(c.getColumnIndex("bid"));
+                int year = c.getInt(c.getColumnIndex("year"));
+                int numplants = c.getInt(c.getColumnIndex("numplants"));
+                double yieldpp = c.getDouble(c.getColumnIndex("yieldpp"));
+                double marketyield = c.getDouble(c.getColumnIndex("marketyield"));
+                double pricepp = c.getDouble(c.getColumnIndex("pricepp"));
+                YieldStat ystat = new YieldStat(brryId, year, numplants, yieldpp, marketyield, pricepp);
+                return ystat;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<Berry> allBerry(){
+        ArrayList<Berry> listBerry = new ArrayList<>();
+        String table = "berry";
         String[] columns = null;
-        String selection = "bid =?";
-        String[] selectionArgs = {bid};
+        String selection = null;
+        String[] selectionArgs = null;
         String groupBy = null;
         String having = null;
         String orderBy = null;
-        String limit = "1";
+        String limit = null;
+        Cursor c = db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
+
+        int cSize = c.getCount();
+        Log.i("BERRY TOOLS", "allBerry cursor size: " + Integer.toString(cSize));
+        if(cSize>0) {
+            for(int i = 0; i<cSize; i++) {
+                c.moveToNext();
+                String newName = c.getString(c.getColumnIndex("name"));
+                String season = c.getString(c.getColumnIndex("season"));
+                String bid = c.getString(c.getColumnIndex("bid"));
+                Berry berry = new Berry(newName, season, bid);
+                listBerry.add(berry);
+            }
+            return listBerry;
+        }
+        return null;
+    }
+
+    public static ArrayList<YieldStat> allStats(){
+        ArrayList<YieldStat> listStat = new ArrayList<>();
+        String table = "stats";
+        String[] columns = null;
+        String selection = null;
+        String[] selectionArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = null;
+        String limit = null;
         Cursor c = db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
         int cSize = c.getCount();
-        Log.i("BERRY TOOLS", "pullStats cursor size: " + Integer.toString(cSize));
+        Log.i("BERRY TOOLS", "allStats cursor size: " + Integer.toString(cSize));
         if(cSize>0) {
-            c.moveToNext();
-            String brryId = c.getString(c.getColumnIndex("bid"));
-            int year = c.getInt(c.getColumnIndex("year"));
-            int numplants = c.getInt(c.getColumnIndex("numplants"));
-            double yieldpp = c.getDouble(c.getColumnIndex("yieldpp"));
-            double marketyield = c.getDouble(c.getColumnIndex("marketyield"));
-            double pricepp = c.getDouble(c.getColumnIndex("pricepp"));
-            YieldStat ystat = new YieldStat(brryId, year, numplants, yieldpp, marketyield, pricepp);
-            return ystat;
+            for(int i = 0; i<cSize; i++) {
+                c.moveToNext();
+                String brryId = c.getString(c.getColumnIndex("bid"));
+                int year = c.getInt(c.getColumnIndex("year"));
+                int numplants = c.getInt(c.getColumnIndex("numplants"));
+                double yieldpp = c.getDouble(c.getColumnIndex("yieldpp"));
+                double marketyield = c.getDouble(c.getColumnIndex("marketyield"));
+                double pricepp = c.getDouble(c.getColumnIndex("pricepp"));
+                YieldStat ystat = new YieldStat(brryId, year, numplants, yieldpp, marketyield, pricepp);
+                listStat.add(ystat);
+            }
+            return listStat;
         }
         return null;
     }
