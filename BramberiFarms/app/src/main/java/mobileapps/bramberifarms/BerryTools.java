@@ -20,18 +20,6 @@ public class BerryTools {
     private static Context c = MainActivity.getmContext();
     private static SQLiteDatabase db = new DBHelper(c).getWritableDatabase();;
 
-    /*
-    new Thread(){
-        public void run(){
-            try{
-
-            }catch(Exception e){
-                //handle failure here
-            }
-        }
-    }.start();
-    */
-
     public static void inputBerry(Berry berryX) {
         final Berry berry = berryX;
         if(!berry.equals(null)) {
@@ -135,7 +123,7 @@ public class BerryTools {
     }
 
     public static ArrayList<Berry> allBerry(){
-        ArrayList<Berry> listBerry = new ArrayList<>();
+        ArrayList<Berry> listBerry = new ArrayList<Berry>();
         String table = "berry";
         String[] columns = null;
         String selection = null;
@@ -163,7 +151,7 @@ public class BerryTools {
     }
 
     public static ArrayList<YieldStat> allStats(){
-        ArrayList<YieldStat> listStat = new ArrayList<>();
+        ArrayList<YieldStat> listStat = new ArrayList<YieldStat>();
         String table = "stats";
         String[] columns = null;
         String selection = null;
