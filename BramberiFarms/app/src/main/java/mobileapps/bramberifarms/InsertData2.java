@@ -1,8 +1,8 @@
 package mobileapps.bramberifarms;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,15 +13,13 @@ import java.util.ArrayList;
 
 import static mobileapps.bramberifarms.BerryTools.allBerry;
 import static mobileapps.bramberifarms.BerryTools.allStats;
-import static mobileapps.bramberifarms.BerryTools.pullBerry;
-import static mobileapps.bramberifarms.BerryTools.pullStats;
 
-public class InsertData extends AppCompatActivity {
+public class InsertData2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_insert_data2);
 
         final Button backBtn = (Button) findViewById(R.id.backBtn);//
         //for berry
@@ -44,10 +42,6 @@ public class InsertData extends AppCompatActivity {
         //for testing pulling a whole table select * from TABLE
         final Button allBBtn = (Button) findViewById(R.id.allBBtn);//
         final Button allSBtn = (Button) findViewById(R.id.allSBtn);//
-
-
-        
-
 
         entBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,34 +94,14 @@ public class InsertData extends AppCompatActivity {
             }
         });
 */
-        allBBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayList berryList = allBerry();
-                if (berryList!=null) {
-                    Log.i("TEST ACTIVITY", "allBerry size: " + berryList.size());
-                } else {
-                   // statOut.setText("No berries");
-                }
-            }
-        });
 
-        allSBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ArrayList statsList = allStats();
-                if (statsList!=null) {
-                    Log.i("TEST ACTIVITY", "allStats size: " + statsList.size());
-                } else {
-                    //statOut.setText("No stats");
-                }
-            }
-        });
+
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(InsertData.this,
+                startActivity(new Intent(InsertData2.this,
                         MainActivity.class));
             }
         });
