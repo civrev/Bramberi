@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".TestActivity" />
         <activity android:name=".ListTestActivity" />
-        <activity android:name=".InsertData2"></activity>
+        <activity android:name=".InsertData2">
+      </activity>
     </application>
 
 </manifest>
