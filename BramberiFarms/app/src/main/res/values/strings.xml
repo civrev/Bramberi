@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BramberiFarms</string>
+    <string name="title_activity_insert_data">insert_data</string>
 </resources>

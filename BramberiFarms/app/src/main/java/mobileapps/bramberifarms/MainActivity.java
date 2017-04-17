@@ -29,10 +29,17 @@ public class MainActivity extends AppCompatActivity {
 
         //listView stuff
         final ListView listView = (ListView) findViewById(R.id.listView);
-        int listItems = 2; //size of the array holding the list
+        int listItems = 5; //size of the array holding the list
         final ListDisplay [] listArry = new ListDisplay[listItems];
         listArry[0] = new ListDisplay("Test Inputs with Walker", 8, new Intent(MainActivity.this, TestActivity.class));
         listArry[1] = new ListDisplay("Test Outputs", 8, new Intent(MainActivity.this, ListTestActivity.class));
+        listArry[2] = new ListDisplay("Insert Data", 8, new Intent(MainActivity.this, InsertData.class));
+        listArry[3] = new ListDisplay("Edit Data", 8, new Intent(MainActivity.this, EditData.class));
+        listArry[4] = new ListDisplay("Delete Data", 8, new Intent(MainActivity.this, DeleteData.class));
+        //listArry[5] = new ListDisplay("Statistics", 8, new Intent(MainActivity.this, InsertData.class));
+        //listArry[6] = new ListDisplay("Weather", 8, new Intent(MainActivity.this, InsertData.class));
+
+
         ArrayAdapter<ListDisplay> testAdapter = new ArrayAdapter<ListDisplay>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, listArry);
         listView.setAdapter(testAdapter);
