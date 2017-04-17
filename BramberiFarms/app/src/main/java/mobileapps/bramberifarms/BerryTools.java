@@ -150,6 +150,31 @@ public class BerryTools {
         return null;
     }
 
+    public static ArrayList<String> allBerryNames(){
+        ArrayList<String> listName = new ArrayList<String>();
+        String table = "berry";
+        String[] columns = {"name"};
+        String selection = null;
+        String[] selectionArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = null;
+        String limit = null;
+        Cursor c = db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
+
+        int cSize = c.getCount();
+        Log.i("BERRY TOOLS", "allBerry cursor size: " + Integer.toString(cSize));
+        if(cSize>0) {
+            for(int i = 0; i<cSize; i++) {
+                c.moveToNext();
+                String newName = c.getString(c.getColumnIndex("name"));
+                listName.add(newName);
+            }
+            return listName;
+        }
+        return null;
+    }
+
     public static ArrayList<YieldStat> allStats(){
         ArrayList<YieldStat> listStat = new ArrayList<YieldStat>();
         String table = "stats";
