@@ -3,6 +3,7 @@ package mobileapps.bramberifarms;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,8 +18,6 @@ import static mobileapps.bramberifarms.BerryTools.allBerryNames;
 public class SpinnerTestActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     final List<String> berryNames = allBerryNames();
-    int selectOne = 0;
-    int selectTwo = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +37,11 @@ public class SpinnerTestActivity extends AppCompatActivity implements AdapterVie
         goBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String berryOne = spinnerOne.getSelectedItem().toString();
+                String berryTwo = spinnerTwo.getSelectedItem().toString();
+                Log.i("GO BTN", " berryOne: " + berryOne);
+                Log.i("GO BTN", " berryTwo: " + berryTwo);
+
 
             }
         });
@@ -55,8 +59,7 @@ public class SpinnerTestActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getApplicationContext(), (berryNames.get(position) + " " + id), Toast.LENGTH_LONG).show();
-        //berryNames.remove(position);
+
     }
 
     @Override

@@ -29,15 +29,16 @@ public class MainActivity extends AppCompatActivity {
 
         //listView stuff
         final ListView listView = (ListView) findViewById(R.id.listView);
-        int listItems = 5; //size of the array holding the list
+        int listItems = 6; //size of the array holding the list
         final ListDisplay [] listArry = new ListDisplay[listItems];
         listArry[0] = new ListDisplay("Test Inputs with Walker", 8, new Intent(MainActivity.this, TestActivity.class));
         listArry[1] = new ListDisplay("Test Outputs", 8, new Intent(MainActivity.this, ListTestActivity.class));
-        listArry[2] = new ListDisplay("Insert Data", 8, new Intent(MainActivity.this, InsertData2.class));
-        listArry[3] = new ListDisplay("Edit Data", 8, new Intent(MainActivity.this, EditData.class));
-        listArry[4] = new ListDisplay("Delete Data", 8, new Intent(MainActivity.this, DeleteData.class));
-        //listArry[5] = new ListDisplay("Statistics", 8, new Intent(MainActivity.this, InsertData.class));
-        //listArry[6] = new ListDisplay("Weather", 8, new Intent(MainActivity.this, InsertData.class));
+        listArry[2] = new ListDisplay("Test Spinners", 8, new Intent(MainActivity.this, SpinnerTestActivity.class));
+        listArry[3] = new ListDisplay("Insert Data", 8, new Intent(MainActivity.this, InsertData2.class));
+        listArry[4] = new ListDisplay("Edit Data", 8, new Intent(MainActivity.this, EditData.class));
+        listArry[5] = new ListDisplay("Delete Data", 8, new Intent(MainActivity.this, DeleteData.class));
+        //listArry[6] = new ListDisplay("Statistics", 8, new Intent(MainActivity.this, InsertData.class));
+        //listArry[7] = new ListDisplay("Weather", 8, new Intent(MainActivity.this, InsertData.class));
 
 
         ArrayAdapter<ListDisplay> testAdapter = new ArrayAdapter<ListDisplay>(this,
