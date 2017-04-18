@@ -122,6 +122,38 @@ public class BerryTools {
         return null;
     }
 
+    public static YieldStat pullStatsByYear(String bName, String bYear){
+        Berry berry = pullBerry(bName);
+        String bid = null;
+        if (bName.length()!=0) {
+            bid = berry.getBid();
+
+            String table = "stats";
+            String[] columns = null;
+            String selection = "bid =? AND stats.year=?";
+            String[] selectionArgs = {bid, bYear};
+            String groupBy = null;
+            String having = null;
+            String orderBy = null;
+            String limit = "1";
+            Cursor c = db.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
+            int cSize = c.getCount();
+            Log.i("BERRY TOOLS", "pullStatsByYear cursor size: " + Integer.toString(cSize));
+            if (cSize > 0) {
+                c.moveToNext();
+                String brryId = c.getString(c.getColumnIndex("bid"));
+                int year = c.getInt(c.getColumnIndex("year"));
+                int numplants = c.getInt(c.getColumnIndex("numplants"));
+                double yieldpp = c.getDouble(c.getColumnIndex("yieldpp"));
+                double marketyield = c.getDouble(c.getColumnIndex("marketyield"));
+                double pricepp = c.getDouble(c.getColumnIndex("pricepp"));
+                YieldStat ystat = new YieldStat(brryId, year, numplants, yieldpp, marketyield, pricepp);
+                return ystat;
+            }
+        }
+        return null;
+    }
+
     public static ArrayList<Berry> allBerry(){
         ArrayList<Berry> listBerry = new ArrayList<Berry>();
         String table = "berry";
