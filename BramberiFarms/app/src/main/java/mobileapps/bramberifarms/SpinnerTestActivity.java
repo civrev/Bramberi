@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class SpinnerTestActivity extends AppCompatActivity implements AdapterVie
         final Spinner spinnerYear = (Spinner) findViewById(R.id.spinnerYear);
         final ListView berryOneLV = (ListView) findViewById(R.id.berryOneLV);
         final ListView berryTwoLV = (ListView) findViewById(R.id.berryTwoLV);
+        final NumberFormat cf = NumberFormat.getCurrencyInstance();
         spinnerOne.setOnItemSelectedListener(this);
 
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item, berryNames);
@@ -46,9 +48,6 @@ public class SpinnerTestActivity extends AppCompatActivity implements AdapterVie
         aa2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerYear.setAdapter(aa2);
 
-
-
-
         goBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,18 +60,40 @@ public class SpinnerTestActivity extends AppCompatActivity implements AdapterVie
                 Log.i("SpinnerTest", " goBtn BERRY TWO: " + berryTwo);
                 Log.i("SpinnerTest", " goBtn YEAR: " + year);
                 YieldStat statOne = BerryTools.pullStatsByYear(berryOne, year);
-                YieldStat statTwo = BerryTools.pullStatsByYear(berryTwo, year);
-                arOne.add(statOne.getBid());
-                arOne.add(Integer.toString(statOne.getNumPlants()));
-                arOne.add(Double.toString(statOne.getYieldPP()));
-                arOne.add((Double.toString(statOne.getMarketYield())));
-                arOne.add(Double.toString(statOne.getPricePP()));
 
-                arTwo.add(statTwo.getBid());
-                arTwo.add(Integer.toString(statTwo.getNumPlants()));
-                arTwo.add(Double.toString(statTwo.getYieldPP()));
-                arTwo.add((Double.toString(statTwo.getMarketYield())));
-                arTwo.add(Double.toString(statTwo.getPricePP()));
+                if(statOne!=null){
+                    arOne.add(statOne.getBid());
+                    arOne.add(Integer.toString(statOne.getNumPlants()));
+                    arOne.add(Double.toString(statOne.getYieldPP()));
+                    arOne.add((Double.toString(statOne.getMarketYield())));
+                    arOne.add(Double.toString(statOne.getPricePP()));
+                    arOne.add(cf.format(statOne.getMarketYield()*statOne.getPricePP()));
+                } else {
+                    arOne.add("NO");
+                    arOne.add("STATS");
+                    arOne.add("FOR");
+                    arOne.add(berryOne.toUpperCase());
+                    arOne.add("IN");
+                    arOne.add(year);
+                }
+                YieldStat statTwo = BerryTools.pullStatsByYear(berryTwo, year);
+
+                if(statTwo!=null){
+                    arTwo.add(statTwo.getBid());
+                    arTwo.add(Integer.toString(statTwo.getNumPlants()));
+                    arTwo.add(Double.toString(statTwo.getYieldPP()));
+                    arTwo.add((Double.toString(statTwo.getMarketYield())));
+                    arTwo.add(Double.toString(statTwo.getPricePP()));
+                    arTwo.add(cf.format(statTwo.getMarketYield()*statTwo.getPricePP()));
+                } else {
+                    arTwo.add("NO");
+                    arTwo.add("STATS");
+                    arTwo.add("FOR");
+                    arTwo.add(berryTwo.toUpperCase());
+                    arTwo.add("IN");
+                    arTwo.add(year);
+                }
+
 
                 Log.i("SpinnerTest", " goBtn: " + 77);
                 ArrayAdapter<String> aaOne = new ArrayAdapter<String>(SpinnerTestActivity.this,
