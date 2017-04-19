@@ -92,10 +92,11 @@ public class BerryTools {
 
     public static YieldStat pullStats(String bName){
         Berry berry = pullBerry(bName);
-        String bid = null;
+        String bid = bName;
         if (bName.length()!=0) {
-            bid = berry.getBid();
-
+            if (berry != null){
+                bid = berry.getBid();
+            }
             String table = "stats";
             String[] columns = null;
             String selection = "bid =?";
