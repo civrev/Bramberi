@@ -20,20 +20,31 @@ import static mobileapps.bramberifarms.BerryTools.allBerryNames;
 
 public class SpinnerTestActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    public final static String PASS_ONE = "mobileapps.bramberifarms.BERRYONE";
+    public final static String PASS_TWO = "mobileapps.bramberifarms.BERRYTWO";
+    public final static String PASS_ONEV = "mobileapps.bramberifarms.BERRYONEV";
+    public final static String PASS_TWOV = "mobileapps.bramberifarms.BERRYTWOV";
     final List<String> berryNames = allBerryNames();
+    final List<String> berryVals = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spinner_test);
 
+        berryVals.add("0");
+        berryVals.add("0");
+
         final Button backBtn = (Button) findViewById(R.id.backBtn);
         final Button goBtn = (Button) findViewById(R.id.goBtn);
+        final Button switchBtn = (Button) findViewById(R.id.switchBtn);
         final Spinner spinnerOne = (Spinner) findViewById(R.id.spinnerOne);
         final Spinner spinnerTwo = (Spinner) findViewById(R.id.spinnerTwo);
         final Spinner spinnerYear = (Spinner) findViewById(R.id.spinnerYear);
         final ListView berryOneLV = (ListView) findViewById(R.id.berryOneLV);
         final ListView berryTwoLV = (ListView) findViewById(R.id.berryTwoLV);
         final NumberFormat cf = NumberFormat.getCurrencyInstance();
+        final Intent bigIntent = new Intent(SpinnerTestActivity.this,
+                CompareStatsActivity.class);
         spinnerOne.setOnItemSelectedListener(this);
 
         ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item, berryNames);
@@ -68,6 +79,7 @@ public class SpinnerTestActivity extends AppCompatActivity implements AdapterVie
                     arOne.add((Double.toString(statOne.getMarketYield())));
                     arOne.add(Double.toString(statOne.getPricePP()));
                     arOne.add(cf.format(statOne.getMarketYield()*statOne.getPricePP()));
+                    berryVals.set(0, Double.toString(statOne.getMarketYield()*statOne.getPricePP()));
                 } else {
                     arOne.add("NO");
                     arOne.add("STATS");
@@ -85,6 +97,7 @@ public class SpinnerTestActivity extends AppCompatActivity implements AdapterVie
                     arTwo.add((Double.toString(statTwo.getMarketYield())));
                     arTwo.add(Double.toString(statTwo.getPricePP()));
                     arTwo.add(cf.format(statTwo.getMarketYield()*statTwo.getPricePP()));
+                    berryVals.set(1, Double.toString(statTwo.getMarketYield()*statTwo.getPricePP()));
                 } else {
                     arTwo.add("NO");
                     arTwo.add("STATS");
@@ -112,6 +125,19 @@ public class SpinnerTestActivity extends AppCompatActivity implements AdapterVie
                         MainActivity.class));
             }
         });
+
+        switchBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+                String berryOne = spinnerOne.getSelectedItem().toString();
+                String berryTwo = spinnerTwo.getSelectedItem().toString();
+                bigIntent.putExtra(PASS_ONE, berryOne);
+                bigIntent.putExtra(PASS_TWO, berryTwo);
+                bigIntent.putExtra(PASS_ONEV, berryVals.get(0));
+                bigIntent.putExtra(PASS_TWOV, berryVals.get(1));
+                startActivity(bigIntent);
+            }
+        });
+
 
 
     }

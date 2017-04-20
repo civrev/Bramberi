@@ -40,6 +40,34 @@ public class BerryTools {
         }
     }
 
+    public static int deleteBerry(String name) {
+        int cSize = -3;
+        cSize = db.delete("berry", "name=?", new String[] {name});
+        Log.i("BERRY TOOLS", "deleteBerry cSize: " + cSize);
+        if(cSize!=-3){
+            return cSize;
+        }
+        return -1;
+    }
+
+    public static int deleteStat(String name, String year) {
+        String bid = null;
+        Berry temp = null;
+        int cSize = -3;
+        if (name.length() > 0) {
+            temp = pullBerry(name);
+        }
+        if (temp != null) {
+            bid = temp.getBid();
+            cSize = db.delete("stats", "bid=? AND year=" + year, new String[]{bid});
+            Log.i("BERRY TOOLS", "deleteStat cSize: " + cSize);
+            if (cSize != -3) {
+                return cSize;
+            }
+        }
+        return -1;
+    }
+
     public static void inputStats(YieldStat statX) {
         final YieldStat stat = statX;
         if(!stat.equals(null)) {
