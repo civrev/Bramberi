@@ -15,13 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity" />
-        <activity android:name=".ListTestActivity" />
         <activity android:name=".SpinnerTestActivity" />
-        <activity android:name=".InsertData2" />
         <activity android:name=".InsertMenuActivity" />
         <activity android:name=".InsertBerryActivity" />
-        <activity android:name=".InsertStatActivity2"></activity>
+        <activity android:name=".InsertStatActivity2" />
+        <activity android:name=".DeletionActivity" />
+        <activity android:name=".CompareStatsActivity" />
+        <activity android:name=".WeatherActivity"></activity>
     </application>
 
 </manifest>
