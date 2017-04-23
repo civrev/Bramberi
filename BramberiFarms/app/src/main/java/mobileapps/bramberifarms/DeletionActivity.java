@@ -17,7 +17,7 @@ public class DeletionActivity extends AppCompatActivity {
 
         final EditText nameTF = (EditText) findViewById(R.id.berryTF);
         final EditText yearTF = (EditText) findViewById(R.id.statTF);
-        final Button backBtn = (Button) findViewById(R.id.backBtn);
+        final Button backBtn = (Button) findViewById(R.id.bBtn);
         final Button berryBtn = (Button) findViewById(R.id.deleteBerryBtn);
         final Button statBtn = (Button) findViewById(R.id.deleteStatBtn);
         final TextView outTxt = (TextView) findViewById(R.id.outTxt);

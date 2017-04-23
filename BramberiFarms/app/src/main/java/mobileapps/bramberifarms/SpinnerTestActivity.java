@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ public class SpinnerTestActivity extends AppCompatActivity implements AdapterVie
         berryVals.add("0");
         berryVals.add("0");
 
-        final Button backBtn = (Button) findViewById(R.id.backBtn);
+        final Button backBtn = (Button) findViewById(R.id.bBtn);
         final Button goBtn = (Button) findViewById(R.id.goBtn);
         final Button switchBtn = (Button) findViewById(R.id.switchBtn);
         final Spinner spinnerOne = (Spinner) findViewById(R.id.spinnerOne);

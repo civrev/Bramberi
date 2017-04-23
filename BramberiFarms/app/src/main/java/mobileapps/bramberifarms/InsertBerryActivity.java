@@ -19,7 +19,7 @@ public class InsertBerryActivity extends AppCompatActivity {
         final EditText sF = (EditText) findViewById(R.id.sF);
         final EditText idF = (EditText) findViewById(R.id.idF);
         final Button entBtn = (Button) findViewById(R.id.entBtn);
-        final Button backBtn = (Button) findViewById(R.id.backBtn);
+        final Button backBtn = (Button) findViewById(R.id.bBtn);
         final TextView outTxt = (TextView) findViewById(R.id.outTxt);
 
         entBtn.setOnClickListener(new View.OnClickListener() {

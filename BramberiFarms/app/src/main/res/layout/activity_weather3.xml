@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/farm">
+    tools:context="mobileapps.bramberifarms.WeatherActivity3">
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="Back" />
+
+    <TextView
+        android:id="@+id/outTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:text="... Loading"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Weather Today Is"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:layout_above="@+id/outTV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp" />
+
+    <EditText
+        android:id="@+id/latTF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Latitude"
+        android:inputType="textPersonName"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/longTF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Longitude"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/latTF"
+        android:layout_alignStart="@+id/latTF" />
+
+    <Button
+        android:id="@+id/enterBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/longTF"
+        android:layout_centerHorizontal="true"
+        android:text="Enter" />
+</RelativeLayout>

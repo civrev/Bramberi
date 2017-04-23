@@ -16,7 +16,7 @@ public class InsertMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_menu);
         final ListView listView = (ListView) findViewById(R.id.listView);
-        final Button backBtn = (Button) findViewById(R.id.backBtn);
+        final Button backBtn = (Button) findViewById(R.id.bBtn);
         int listItems = 2; //size of the array holding the list
         final ListDisplay [] listArry = new ListDisplay[listItems];
         listArry[0] = new ListDisplay("Insert Berry", 8, new Intent(InsertMenuActivity.this, InsertBerryActivity.class));

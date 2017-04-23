@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         listArry[0] = new ListDisplay("Insert Data", 8, new Intent(MainActivity.this, InsertMenuActivity.class));
         listArry[1] = new ListDisplay("Delete Data", 8, new Intent(MainActivity.this, DeletionActivity.class));
         listArry[2] = new ListDisplay("Statistics", 8, new Intent(MainActivity.this, SpinnerTestActivity.class));
-        listArry[3] = new ListDisplay("Weather", 8, new Intent(MainActivity.this, WeatherActivity.class));
+        listArry[3] = new ListDisplay("Weather", 8, new Intent(MainActivity.this, WeatherActivity3.class));
 
 
 

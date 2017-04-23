@@ -1,6 +1,9 @@
 package mobileapps.bramberifarms;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -21,6 +24,21 @@ public class CompareStatsActivity extends AppCompatActivity {
         final TextView t1 = (TextView) findViewById(R.id.t1);
         final TextView t2 = (TextView) findViewById(R.id.t2);
         final TextView mid = (TextView) findViewById(R.id.mid);
+
+        Configuration config = getResources().getConfiguration();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // Landscape
+            // creates object for java class that is the contructor
+            StatFrag ls_fragment = new StatFrag();
+            //
+            fragmentTransaction.replace(android.R.id.content, ls_fragment);
+            fragmentTransaction.commit();
+
+        }
 
 
         if(berryOneVal>berryTwoVal) {
